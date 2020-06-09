@@ -1,13 +1,21 @@
 const express = require("express");
 const router = express.Router();
+const path = require("path");
 
+//this route will display the notes.html page
+router.get("/notes", (req, res) => {
 
-router.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "public", "notes.html"));
 
-    console.log("this is home page")
+})
 
+//this route will display the index.html page
+router.get("*", (req, res) => {
+
+    res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 
 })
 
 
-module.exports = router;
+//exporting routes
+module.exports = router;    

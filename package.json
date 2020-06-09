@@ -1,0 +1,24 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "note taker application",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/singhpri30/Note-Taker.git"
+  },
+  "author": "Priyanka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/singhpri30/Note-Taker/issues"
+  },
+  "homepage": "https://github.com/singhpri30/Note-Taker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "uuidv4": "^6.1.0"
+  }
+}

@@ -1,39 +1,55 @@
 const express = require("express");
 const router = express.Router();
+
+// const store = require("../db/Store.js");
 const fs = require("fs");
+//const util = require("util");
+// const readFileAsync = util.promisify(fs.readFile);
+// const writeFileAsync = util.promisify(fs.writeFile);
 
-let noteData = [];
+// fs.readFile("./db/db.json", 'utf8', function (err, data) {
 
+//     // Display the file content 
 
-const test = fs.readFileSync("./db/db.json", "utf8");
-//console.log(test);
+//     console.log(data);
+// });
 
 router.get("/notes", (req, res) => {
-
-    res.sendFile(path.join(__dirname, "..", "db", "db.json"));
-
-    // fs.readFile("./db/db.json", 'utf8', (err, noteData) => {
-    //     if (err) {
-    //         return console.log(err);
-    //     }
-    //     console.data(noteData)
-    //     res.send(noteData);
-    // });
-
-
-})
-
-router.post("/notes", (req, res) => {
-    var newNoteData = req.body;
-
-    fs.writeFile("./db/db.json", JSON.stringify(newNoteData), (err) => {
+    fs.sendFile('./db/db.json', 'utf8', (err, data) => {
         if (err) throw err;
-        console.log('The file has been saved!');
+        console.log(data);
+        res.json(JSON.parse(data));
     });
-    noteData.push(newNoteData);
-    res.json(newNoteData);
-
 })
 
+
+// router.get("/notes", (req, res) => {
+
+//     store.getNotes(notes)
+//         .then((notes) => res.json(notes))
+//         .catch((err) => res.status(500).json(err));
+
+
+// });
+
+
+
+// router.post("/notes", (req, res) => {
+
+//     store.addNote(req.body)
+//         .then((note) => res.json(note))
+//         .catch((err) => res.status(500).json(err));
+
+// })
+
+// router.delete("/notes/:id", (req, res) => {
+
+//     store.removeNote(req.params.id)
+//         .then(() => res.json({
+//             ok: true
+//         }))
+//         .catch((err) => res.status(500).json(err));
+
+// })
 
 module.exports = router;
